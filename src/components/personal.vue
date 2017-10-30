@@ -1,9 +1,10 @@
 <template>
 	<div class="personal">
-		<mu-appbar class="title" title="个人中心"></mu-appbar>
+		<mu-appbar class="title" title="个人中心">
+		</mu-appbar>
 		<main>
 			<img :src="user.avatar_url"/>
-			<span class="name">{{user.loginname}}</span>
+			<span class="name">{{userData.loginname}}</span>
 			<div class="timer">
 				<span>积分：{{userData.score}}</span>
 				<span>注册时间：{{userData.create_at | datatime}}</span>
@@ -18,16 +19,16 @@
 						<span class="count">{{userData.recent_topics.length}}个</span>
 					</mu-list-item>
 					<mu-list-item title="最近回复" v-if='userData.recent_replies' :open='false' class="list" toggleNested>
-						<mu-icon class="icon" slot="left" value="insert_drive_file"/>
+						<mu-icon class="icon" slot="left" value="drafts"/>
 						<mu-list-item v-for='item in userData.recent_replies' :key='item.id' :title='item.title' slot="nested">
 							<mu-icon class="icon" slot="left" value="description"/>
 						</mu-list-item>
 						<span class="count">{{userData.recent_replies.length}}个</span>
 					</mu-list-item>
 					<mu-list-item title="收藏主题" v-if='userData.collect_topics' :open='false' class="list" toggleNested>
-						<mu-icon class="icon" slot="left" value="insert_drive_file"/>
+						<mu-icon class="icon" slot="left" value="folder"/>
 						<mu-list-item v-for='item in userData.collect_topics' :key='item.id' :title='item.title' slot="nested">
-							<mu-icon class="icon" slot="left" value="description"/>
+							<mu-icon class="icon" slot="left" value="folder_open"/>
 						</mu-list-item>
 						<span class="count">{{userData.collect_topics.length}}个</span>
 					</mu-list-item>
@@ -95,9 +96,6 @@
 			}
 		}
 	})
-	
-	
-
 </script>
 
 <style scoped>
@@ -107,23 +105,21 @@
 	}
 	.title{
 		text-align: center;
-		height: 4rem;
+		height: 5rem;
 	}
 	main{
 		display: flex;
 		flex: 1;
-	    /*margin: 5rem 0;*/
 	    flex-direction: column;
 	    align-items: center;
 	    padding: 1rem;
 	    background-color: #f8f8f8;
 	}
 	main>img{
-		width:4rem;
-		height:4rem;
+		width:8rem;
+		height:8rem;
 		border-radius: 50%;
-		/*display: block;*/
-		margin:1rem auto;
+		margin:1rem 0;
 	}
 	.demo-raised-button{
 		width: 100%;
@@ -145,8 +141,8 @@
 		flex:1;
 		width: 100%;
 		overflow-y: auto;
-		height: auto;
-		/*margin-bottom: 1rem;*/
+		height: 200px;
+		margin-bottom: 1rem;
 	}
 	.list:first-child{
 		border-top: 1px solid #009688;
@@ -162,8 +158,8 @@
 		color: #009688;
 	}
 	.bottom{
-		position: fixed;
-		bottom: 0;
-		width: 100%;
+	    position: fixed;
+	    bottom: 0;
+	    width:100%;
 	}
 </style>

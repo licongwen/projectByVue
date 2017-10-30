@@ -35,6 +35,18 @@
 				}else{
 					_this.mytab='/login';
 				}
+				if(_this.$route.path==='/login' || _this.$route.path==='/personal'){
+					_this.bottomnav='我的';
+				}
+				if(_this.$route.path==='/home'){
+					_this.bottomnav='首页';
+				}
+				if(_this.$route.path==='/subscribe'){
+					_this.bottomnav='发布';	
+				}
+				if(_this.$route.path==='/message'){
+					_this.bottomnav='消息'
+				}
 			}
 		}
 	}

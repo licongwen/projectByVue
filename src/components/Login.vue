@@ -1,6 +1,5 @@
 <template>
-
- <div class="login-box">
+  <div class="login-box">
     <mu-appbar class="title" title="登录"></mu-appbar>
     <main>
     	<mu-text-field v-model="value" label="Access Token" :errorText="error" labelFloat/>
@@ -8,8 +7,8 @@
     </main> 
     <bottomNavigation class='bottom'></bottomNavigation>
   </div>
-	
 </template>
+
 <script>
 	import axios from 'axios'
 	import bottomNavigation from './public/bottomNavigation'
