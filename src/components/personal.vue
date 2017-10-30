@@ -35,13 +35,16 @@
 			</section>
 			<mu-raised-button @click="logout" class="demo-raised-button" label="退出登录" icon="power_settings_new"/>
 		</main>
-
+		<bottomNavigation class='bottom'></bottomNavigation>
 	</div>
 </template>
 <script>
 	import axios from 'axios'
+	import bottomNavigation from './public/bottomNavigation.vue'
 	export default({
-		name:'Personal',
+		components:{
+			bottomNavigation
+		},
 		data(){
 			return{
 				accesstoken:'',
@@ -97,14 +100,14 @@
 
 </script>
 
-<style>
+<style scoped>
 	.personl{
 		display: flex;
 		flex-direction: column;
 	}
 	.title{
 		text-align: center;
-		height: 5rem;
+		height: 4rem;
 	}
 	main{
 		display: flex;
@@ -116,8 +119,8 @@
 	    background-color: #f8f8f8;
 	}
 	main>img{
-		width:8rem;
-		height:8rem;
+		width:4rem;
+		height:4rem;
 		border-radius: 50%;
 		/*display: block;*/
 		margin:1rem auto;
@@ -157,5 +160,10 @@
 	}
 	.icon{
 		color: #009688;
+	}
+	.bottom{
+		position: fixed;
+		bottom: 0;
+		width: 100%;
 	}
 </style>

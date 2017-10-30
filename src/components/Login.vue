@@ -6,13 +6,17 @@
     	<mu-text-field v-model="value" label="Access Token" :errorText="error" labelFloat/>
     	<mu-raised-button @click="login" label="登录" class="demo-raised-button" primary/>
     </main> 
+    <bottomNavigation class='bottom'></bottomNavigation>
   </div>
 	
 </template>
 <script>
 	import axios from 'axios'
+	import bottomNavigation from './public/bottomNavigation'
 	export default{
-		name:'Login',
+		components:{
+			bottomNavigation
+		},
 		data(){
 			return {
 				value:'',
@@ -62,5 +66,9 @@
 		margin-top: 2rem;
 		width:100%;
 	}
-
+	.bottom{
+		position: fixed;
+		bottom: 0;
+		width:100%;
+	}
 </style>

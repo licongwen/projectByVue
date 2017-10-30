@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Personal from '@/components/personal'
+import Message from '@/components/message'
+import Home from '@/components/home'
+import Subscribe from '@/components/subscribe'
 
 Vue.use(Router)
 
@@ -22,6 +25,21 @@ export default new Router({
       path:'/personal',
       name:'Personal',
       component:Personal
+    },
+    {
+      path:'/message',
+      name:'Message',
+      component:Message
+    },
+    {
+      path:'/home',
+      name:'Home',
+      component:Home
+    },
+    {
+      path:'/subscribe',
+      name:'Subscribe',
+      component:Subscribe
     }
   ]
 })
