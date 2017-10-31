@@ -103,8 +103,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: #f8f8f8;
-		/*overflow: auto;
-*/	}
+	}
 	.title {
 	    text-align: center;
 	    height: 5rem;
