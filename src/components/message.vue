@@ -173,11 +173,6 @@
 		align-items: center;
 		justify-content: flex-end;
 	}
-	.bottom{
-		position: fixed;
-		bottom: 0;
-		width:100%;
-	}
 	.login-button{
 		margin-top: 5px;
 	}

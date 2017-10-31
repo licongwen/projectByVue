@@ -99,63 +99,80 @@
 </script>
 
 <style scoped>
-	.personl{
+	.personal{
 		display: flex;
 		flex-direction: column;
+		background-color: #f8f8f8;
+		/*overflow: auto;
+*/	}
+	.title {
+	    text-align: center;
+	    height: 5rem;
 	}
-	.title{
-		text-align: center;
-		height: 4rem;
-	}
-	main{
-		display: flex;
-		flex: 1;
-		margin: 0;
+
+	main {
+	    flex: 1;
+	    margin: 5rem 0;
+	   	
+	    display: flex;
 	    flex-direction: column;
+	    /*justify-content: center;*/
 	    align-items: center;
 	    padding: 1rem;
 	    background-color: #f8f8f8;
 	}
-	main>img{
-		width:6rem;
-		height:6rem;
-		border-radius: 50%;
-		margin:1rem 0;
+
+	.demo-raised-button {
+	    width: 100%;
+	    background: #009688;
+	    color:#f8f8f8;
 	}
-	.demo-raised-button{
-		width: 100%;
-		background-color: #009688;
-		color: #fff;
+
+	main>img {
+	    width: 8rem;
+	    height: 8rem;
+	    border-radius: 50%;
+	    margin: 1rem 0;
 	}
-	.name{
-		color: #009688;
-		font-weight: 700;
-		font-size:24px;
+
+	.name {
+	    color: #009688;
+	    font-weight: 700;
+	    font-size: 24px;
 	}
-	.timer{
-		display: flex;
-		justify-content: space-around;
-		width:90%;
-		margin:1rem 0;
+
+	.timer {
+	    display: flex;
+	    justify-content: space-around;
+	    width: 100%;
+	    margin: 1rem 0;
 	}
-	.content{
-		flex:1;
-		width: 100%;
-		overflow-y: auto;
-		height: 200px;
-		margin-bottom: 1rem;
+
+	.content {
+	    flex: 1;
+	    width: 100%;
+	    height:180px;
+	    overflow-y: auto;
+	    margin-bottom: 1rem;
 	}
-	.list:first-child{
-		border-top: 1px solid #009688;
+
+	.mu-list {
+	    padding: 0;
 	}
-	.count{
-		background-color: #009688;
-		color: #fff;
-		padding:0.1rem 0.6rem;
-		border-radius:0.2rem;
-		margin-top:2rem;
+
+	.list:first-child {
+	    border-top: 1px solid #009688;
 	}
-	.icon{
-		color: #009688;
+
+	.count {
+	    background-color: #009688;
+	    color: #fff;
+	    padding: 0.1rem 0.6rem;
+	    border-radius: 0.2rem;
+	    margin-top: 2rem;
+	}
+
+	.icon {
+	    color: #009688;
 	}
 </style>

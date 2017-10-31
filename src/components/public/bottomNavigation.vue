@@ -1,5 +1,5 @@
 <template>
-	<mu-paper>
+	<mu-paper class="bottom_nav">
 		<mu-bottom-nav :value='bottomnav' @change='changeVal'>
 			<mu-bottom-nav-item to='/home' value='首页' title='首页' icon='home' />
 			<mu-bottom-nav-item to='/subscribe' value='发布' title='发布' icon='subject' />
@@ -51,3 +51,16 @@
 		}
 	}
 </script>
+<style>
+	.bottom_nav .mu-bottom-nav-shift-wrapper{
+		display: flex;
+		justify-content: space-around;
+	}
+	.bottom_nav{
+		height: 5rem;
+		position: fixed;
+		bottom:0;
+		left:0;
+		right:0;
+	}
+</style>
