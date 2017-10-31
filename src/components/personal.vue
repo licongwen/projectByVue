@@ -110,7 +110,7 @@
 	main{
 		display: flex;
 		flex: 1;
-		margin: 0 0;
+		margin: 0;
 	    flex-direction: column;
 	    align-items: center;
 	    padding: 1rem;
@@ -158,9 +158,4 @@
 	.icon{
 		color: #009688;
 	}
-	/*.bottom{
-	    position: fixed;
-	    bottom: 0;
-	    width:100%;
-	}*/
 </style>
