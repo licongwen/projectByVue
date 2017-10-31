@@ -116,8 +116,8 @@
 	    background-color: #f8f8f8;
 	}
 	main>img{
-		width:8rem;
-		height:8rem;
+		width:6rem;
+		height:6rem;
 		border-radius: 50%;
 		margin:1rem 0;
 	}
@@ -157,9 +157,9 @@
 	.icon{
 		color: #009688;
 	}
-	/*.bottom{
+	.bottom{
 	    position: fixed;
 	    bottom: 0;
 	    width:100%;
-	}*/
+	}
 </style>
