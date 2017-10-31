@@ -157,9 +157,9 @@
 	.icon{
 		color: #009688;
 	}
-	.bottom{
+	/*.bottom{
 	    position: fixed;
 	    bottom: 0;
 	    width:100%;
-	}
+	}*/
 </style>
