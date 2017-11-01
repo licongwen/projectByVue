@@ -120,7 +120,7 @@
 		overflow: auto;
 		border:1px solid #d9d9d9;
 	}
-	.tabs{
+	.tab .tabs{
 		margin-top: 5rem;
 		height: 4rem;
 		position: fixed;
@@ -137,7 +137,7 @@
 	.list{
 		display: flex;
 		padding:1rem;
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid #999;
 	}
 	.list>img{
 		width:4rem;
