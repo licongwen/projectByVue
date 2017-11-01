@@ -24,7 +24,7 @@
 		},
 		methods:{
 			login(){
-				// 'Access Token: 55b176a9-8a6a-4b0b-b13c-1c04e9db5d1a'
+				// 'Access Token: a4525c4c-8590-4ae7-8a09-d413ee96c60b'
 				let _this=this;
 				axios.post('https://www.vue-js.com/api/v1/accesstoken',{accesstoken:_this.value})
 				.then(function(response){
