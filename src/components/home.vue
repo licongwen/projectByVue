@@ -1,9 +1,18 @@
-<template>
-	<div class="home">
+<!-- <template>
+	<div class="wrapper">
 		<isHeader class='header'></isHeader>
 		<tabs class='tab'></tabs>
 		<bottomNavigation></bottomNavigation>
 	</div>
+</template> -->
+<template>
+    <div class="wrapper">
+        <isHeader class="header"></isHeader>
+        <!-- <keep-alive> -->
+        <tabs class="tab"></tabs>
+        <!-- </keep-alive> -->
+        <bottomNavigation></bottomNavigation>
+    </div>
 </template>
 <script type="text/javascript">
 	import bottomNavigation from './public/bottomNavigation.vue'
@@ -18,7 +27,7 @@
 	}
 </script>
 <style>
-	.home{
+	.wrapper{
 		display: flex;
 		flex-direction: column;
 		height: 100vh;

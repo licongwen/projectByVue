@@ -15,5 +15,6 @@
 <style>
 	.title{
 		text-align: center;
+		height: 5rem;
 	}
 </style>
