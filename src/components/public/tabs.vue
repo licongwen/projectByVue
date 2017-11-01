@@ -134,12 +134,12 @@
 	.mu-tab-link,.mu-tab-active{
 	    white-space: nowrap;
 	}
-	.mu-list{
+	/*.mu-list{
 	    padding: 0;
 	    height:auto;
 		width:100%;
 		margin-top: 4rem;
-	}
+	}*/
 	.list{
 		display: flex;
 		padding:1rem;
