@@ -22,6 +22,10 @@
 	}
 </script>
 <style>
+	.hello{
+		display: flex;
+		flex-direction: column;	
+	}
 	.title{
 		text-align: center;
 		height: 5rem;
