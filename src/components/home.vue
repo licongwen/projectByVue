@@ -32,7 +32,7 @@
 	}
 	.tab{
 		flex: 1;
-    	margin: 9rem 0 5rem 0;
+    	margin: 5rem 0 5rem 0;
 	}
 	
 </style>

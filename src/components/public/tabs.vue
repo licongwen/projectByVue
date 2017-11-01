@@ -8,7 +8,7 @@
 			<mu-tab value='ask' title='问答'/>
 			<mu-tab value='job' title='招聘'/>
 		</mu-tabs>
-		<mu-list>
+		<mu-list class='mu-list'>
 			<template v-for="(item,index) in items">
 				<section class="list">
 					<router-link :to="{path:'/login'}" :src='item.author.avatar_url' tag='img' alt='user'>
@@ -120,7 +120,7 @@
 		overflow: auto;
 		border:1px solid #d9d9d9;
 	}
-	.tab .tabs{
+	.tabs{
 		margin-top: 5rem;
 		height: 4rem;
 		position: fixed;
@@ -134,10 +134,16 @@
 	.mu-tab-link,.mu-tab-active{
 	    white-space: nowrap;
 	}
+	.mu-list{
+	    padding: 0;
+	    height:auto;
+		width:100%;
+		margin-top: 4rem;
+	}
 	.list{
 		display: flex;
 		padding:1rem;
-		border-bottom: 1px solid #999;
+		border-bottom: 1px solid #ccc;
 	}
 	.list>img{
 		width:4rem;
