@@ -13,7 +13,7 @@
 				<section class="list">
 					<router-link :to="{path:'/login'}" :src='item.author.avatar_url' tag='img' alt='user'>
 					</router-link>
-					<router-link :to="{path:'/login'}" tag='div' class='content'>
+					<router-link :to="{path:'/home/content',query:{id:item.id}}" tag='div' class='content'>
 						<div class="list_title">
 							<span v-if='item.top'>置顶</span>
 							<span v-else-if='item.good'>精华</span>

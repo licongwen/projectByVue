@@ -6,7 +6,7 @@ import Personal from '@/components/personal'
 import Message from '@/components/message'
 import Home from '@/components/home'
 import Subscribe from '@/components/subscribe'
-
+import Content from '@/components/content'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +50,11 @@ export default new Router({
       path:'/subscribe',
       name:'Subscribe',
       component:Subscribe
+    },
+    {
+      path:'/home/content',
+      name:'Content',
+      component:Content
     }
   ]
 })
