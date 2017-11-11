@@ -21,10 +21,13 @@ export default new Router({
   // },
   routes: [
     {
-      path: '/',
+      path:'/',
+      redirect:'/login'
+    },
+    {
+      path: '/hello',
       name: 'Hello',
-      redirect:'/home'
-      // component: HelloWorld
+      component: HelloWorld
     },
     {
     	path:'/login',
@@ -54,7 +57,10 @@ export default new Router({
     {
       path:'/home/content',
       name:'Content',
-      component:Content
+      component:Content,
+      // childre:[
+      //   {path:'/',component:ABS}
+      // ]
     }
   ]
 })

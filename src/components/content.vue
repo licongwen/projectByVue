@@ -22,12 +22,59 @@
 			<!-- 内容区 -->
 			<article class="md_content" v-html='contentData.content'></article>
 			<!-- 评论区 -->
+			<ul v-if='contentData.replies.length' class="replies"> 
+				<li>{{contentData.replies.length}}条回复</li>
+				<li class="reply" v-for='(list,index) of contentData.replies' :key='list.id'>
+					<section class="msg">
+						<div class="author">
+							<router-link :to="{path:'/login'}" :src='list.author.avatar_url' tag="img" alt="user"></router-link>
+								<span class='name'>{{list.author.loginname}}</span>
+								<span class="timer">{{index+1}}楼•{{list.create_at | time}}</span>
+						</div>
+						<!-- 未登录状态下点赞 -->
+						<div @click="open" v-if="list.ups.length && !accesstoken" class="ups">
+							<mu-icon value="thumb_up" :size="16"/>
+							<span>{{list.ups.length}}</span>
+						</div>
+						<!-- 登录状态下点赞 -->
+						<div @click="open" v-if="accesstoken" class="ups">
+							<mu-icon value="thumb_up" :size="16" @click="like(index)"/>
+							<span>{{list.ups.length}}</span>
+							<mu-icon class="textsms" value="textsms" :size='16' @click="changeReply(index)"/>
+						</div>
+					</section>
+					<p v-html="list.content"></p>
+					<div v-if="accesstoken" class="reply_show" v-show="list.reply_show">
+						<textarea v-model="single_reply" class="reply" placeholder="请输入内容..." rows="5"></textarea>
+						<mu-raised-button label="回复" class="demo-raised-button" primary @click="single_reply_content(index)"/>
+						<mu-raised-button  label="取消" class="demo-raised-button" @click="exit_single_reply_content(index)"  primary/>
+					</div>
+				</li>
+			</ul>
+			<ul v-if="accesstoken" class="replies">
+				<li>添加回复</li>
+				<li>
+					<textarea v-model="reply" class="reply" placeholder="请输入回复内容..." rows="5"></textarea>
+					<mu-raised-button label="回复" class="demo-raised-button" primary/>
+				</li>
+			</ul>
 		</main>
+		<!-- 弹出提示框 -->
+		<mu-dialog v-if="!accesstoken" :open="dialog" title="友情提示:" @close="close">
+			请先登录，登陆后即可点赞。
+			<mu-flat-button slot="actions" @click="close" primary label="取消" />
+			<mu-flat-button to="/login" slot="actions" @click="close" primary label="确定" />
+		</mu-dialog>
+		<mu-dialog v-if="accesstoken" :open='isReply' title="提示：" @click="close">
+			{{tips}}
+			<mu-flat-button slot="actions" @click="close" primary label="确定"/>
+		</mu-dialog>
 	</div>
 </template>
 <script>
 	import axios from 'axios'
 	import timeago from 'timeago.js'
+	import Vue from 'vue'
 	 
 	export default{
 		data(){
@@ -40,7 +87,12 @@
 					replies:{}
 				},
 				collection_txt:'收藏主题',
-				collection:false
+				collection:false,
+				single_reply:'',
+				reply:'',
+				dialog:false,
+				isReply:false,
+				tips:''
 
 			}
 		},
@@ -90,7 +142,61 @@
 					console.log(response.data.data);
 					_this.contentData=response.data.data;
 				})
-			}
+			},
+			open(){
+				this.dialog=true;
+			},
+			close(){
+				this.dialog=false;
+			},
+			like(index){
+				let _this=this;
+				let reply_id=_this.contentData.replies[index].id;
+				axios.post('https://www.vue-js.com/api/v1/reply/' + reply_id + '/ups',{accesstoken:_this.accesstoken})
+				.then(function(response){
+					_this.getData();
+				})	
+			},
+			changeReply(index) {
+                //点击对评论进行回复
+                let arr = this.contentData.replies;
+                arr.map(function(item, i) {
+                    index === i ? Vue.set(item, 'reply_show', true) : Vue.set(item, 'reply_show', false)
+                })
+
+                this.single_reply = '@' + this.contentData.replies[index].author.loginname + ' '
+            },
+            exit_single_reply_content(index){
+            	this.single_reply='';
+            	let arr = this.contentData.replies;
+            	arr[index].reply_show=false;
+            	Vue.set(arr,index,arr[index])
+            },
+            single_reply_content(index){
+            	let id = this.$route.query.id;
+            	let _this=this;
+            	axios.post('https://www.vue-js.com/api/v1/topic/' + id + '/replies',{
+            		accesstoken:_this.accesstoken,
+            		content:_this.single_reply,
+            		reply_id:_this.contentData.replies[index].id
+            	})
+            	.then(function(response){
+            		_this.tips='回复成功!';
+            		_this.isReply=true;
+            		setTimeout(function(){
+            			_this.isReply=false;
+            		},1500)
+            		_this.getData();
+            		_this.single_reply=''
+            	})
+            	.catch(function(error) {
+                    that.tips = '请输入回复内容...'
+                    that.isReply = true
+                    setTimeout(function() {
+                        that.isReply = false
+                    }, 1500)
+                })
+            }
 		}
 	}
 </script>
@@ -201,5 +307,64 @@
 	    max-width: 100%;
 	    vertical-align: middle;
 	    border: 0;
+	}
+	/*评论区*/
+	.replies{
+
+	}
+	.replies>li{
+		padding: 1rem;
+	}
+	.replies>li:first-child{
+		background:#f6f6f6;
+	}
+	.reply{
+		border-top: 1px solid #f0f0f0;
+	}
+	.reply>.msg{
+		display:flex;
+		justify-content: space-between;
+		padding-bottom: 1rem;
+	}
+	.reply>p{
+		margin-bottom:2rem;
+	}
+	.author>img{
+		width:3rem;
+		height:3rem;
+		vertical-align:top;
+	}
+	.author>.name{
+		color:#666;
+		font-weight:700;
+	}
+	.author>.timer{
+		color:#08c;
+	}
+	.msg>.ups{
+		display:flex;
+		align-items: center;
+		color: #009688;
+	}
+	.ups>span{
+		margin-left: 0.5rem;
+	}
+	.reply{
+		width:100%;
+	}
+	.textsms{
+		margin-left: 1rem;
+		color:#009688;
+	}
+	.reply_show{
+		animation: reply_show 1s ease;
+	}
+	@keyframes reply_show{
+		0%{
+			opacity:0;
+		}
+		100%{
+			opacity:1;
+		}
 	}
 </style>
