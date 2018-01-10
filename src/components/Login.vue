@@ -38,7 +38,7 @@
 				})
 				.catch(function(error){
 					console.log(error)
-					_this.error="输入错误，请重新输入"
+					_this.error="账号密码错误，请重新输入"
 				})
 			}
 		}	
